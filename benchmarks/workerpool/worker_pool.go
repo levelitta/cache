@@ -20,8 +20,8 @@ func NewWorkerPool(ctx context.Context, workersCount uint32) *WorkerPool {
 	}
 
 	for i := uint32(0); i < workersCount; i++ {
+		wp.wg.Add(1)
 		go func() {
-			wp.wg.Add(1)
 			defer wp.wg.Done()
 
 			w := NewWorker()

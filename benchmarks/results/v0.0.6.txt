@@ -1,0 +1,23 @@
+PASS
+ok  	github.com/levelitta/cache	0.003s
+goos: linux
+goarch: amd64
+pkg: github.com/levelitta/cache/benchmarks
+cpu: Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz
+BenchmarkCache/empty_cache:_recpu: Intel(R) Core(TM) i7-8700K 3471908	       335.3 ns/op	      95 B/op	       3 allocs/op
+BenchmarkCache/empty_cache:_reads=50%,_write=50%-12         	 2743102	       477.4 ns/op	     119 B/op	       5 allocs/op
+BenchmarkCache/filled_cache:_reads=0%,_write=100%-12        	 5434771	       232.9 ns/op	      23 B/op	       1 allocs/op
+BenchmarkCache/filled_cache:_reads=50%,_write=50%-12        	 3579975	       355.8 ns/op	      47 B/op	       3 allocs/op
+BenchmarkCache/delete_item_and_set_new-12                   	 2509681	       520.1 ns/op	     119 B/op	       5 allocs/op
+BenchmarkCache_ParallelOperations/reads=50%,_write=50%-12   	 2364699	       503.2 ns/op	      47 B/op	       2 allocs/op
+BenchmarkCache_ParallelOperations/reads=75%,_write=25%-12   	 2779435	       434.7 ns/op	      47 B/op	       2 allocs/op
+BenchmarkCache_ParallelOperations/reads=95%,_write=5%-12    	 3063619	       395.7 ns/op	      47 B/op	       2 allocs/op
+BenchmarkCache_ParallelOperations/reads=5%,_write=95%-12    	 2896834	       389.1 ns/op	      47 B/op	       2 allocs/op
+BenchmarkSetWithEvict-12                                    	1000000000	         0.0000001 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/levelitta/cache/benchmarks	120.769s
+PASS
+ok  	github.com/levelitta/cache/benchmarks/workerpool	0.003s
+?   	github.com/levelitta/cache/evict	[no test files]
+rks/workerpool	0.003s
+?   	github.com/levelitta/cache/evict	[no test files]
