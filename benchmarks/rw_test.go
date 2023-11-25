@@ -48,31 +48,6 @@ func BenchmarkCache(b *testing.B) {
 	})
 }
 
-func BenchmarkSet(b *testing.B) {
-	b.Run("levelitta cache", func(b *testing.B) {
-		b.StopTimer()
-		c := cache.NewCache[string, int](capacity)
-		b.StartTimer()
-		for i := 0; i < b.N; i++ {
-			c.Set(fmt.Sprintf("key:%v", i), i)
-		}
-	})
-}
-
-func BenchmarkRead(b *testing.B) {
-	b.Run("levelitta cache", func(b *testing.B) {
-		b.StopTimer()
-		c := cache.NewCache[string, int](capacity)
-		for i := 0; i < b.N; i++ {
-			c.Set(fmt.Sprintf("key:%v", i), i)
-		}
-		b.StartTimer()
-		for i := 0; i < b.N; i++ {
-			c.Get(fmt.Sprintf("key:%v", i))
-		}
-	})
-}
-
 func BenchmarkSetWithEvict(b *testing.B) {
 
 }
