@@ -25,4 +25,4 @@ test-race:
 
 .PHONY: bench
 bench:
-	go test -benchmem -bench=. ./... -run=^#
+	go test -benchmem -bench=. ./... -run=^# | tee ./benchmarks/results/new.txt

@@ -13,7 +13,7 @@ func zeroValue[T any]() T {
 
 type Cache[K comparable, V any] struct {
 	items      map[K]*Item[V]
-	mu         sync.Mutex // TODO:заменить на RWMutes и проверить производительность
+	mu         sync.Mutex
 	evictQueue *list.List
 	capacity   uint64
 	len        uint64
@@ -37,17 +37,7 @@ func NewCache[K comparable, V any](capacity uint64) *Cache[K, V] {
 }
 
 func (c *Cache[K, V]) Set(key K, value V) {
-	c.mu.Lock()
-	defer c.mu.Unlock()
-
-	if item, has := c.items[key]; has {
-		item.value = value
-		c.evictQueue.MoveToFront(item.evictQueue)
-	} else {
-		item = &Item[V]{value: value}
-		item.evictQueue = c.evictQueue.PushFront(item)
-		c.items[key] = item
-	}
+	c.SetWithTTL(key, value, 0)
 }
 
 func (c *Cache[K, V]) SetWithTTL(key K, value V, ttl time.Duration) {
@@ -104,7 +94,7 @@ func (c *Cache[K, V]) Del(key K) {
 		return
 	}
 
-	c.evictQueue.Remove(item.evictQueue) // TODO: попробовать при удалении элемента класть его в sync.Pool
+	c.evictQueue.Remove(item.evictQueue)
 	delete(c.items, key)
 }
 
