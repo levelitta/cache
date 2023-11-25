@@ -22,9 +22,9 @@ type Item[V any] struct {
 	evictQueue *list.Element
 }
 
-func NewCache[K comparable, V any]() *Cache[K, V] {
+func NewCache[K comparable, V any](capacity uint64) *Cache[K, V] {
 	return &Cache[K, V]{
-		items:      make(map[K]*Item[V]),
+		items:      make(map[K]*Item[V], capacity),
 		evictQueue: list.New(),
 	}
 }

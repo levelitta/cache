@@ -7,7 +7,7 @@ import (
 
 func TestCache_GetSet(t *testing.T) {
 	t.Run("success", func(t *testing.T) {
-		c := NewCache[string, string]()
+		c := NewCache[string, string](10)
 
 		c.Set("key-1", "val-1")
 		c.Set("key-2", "val-2")
@@ -19,7 +19,7 @@ func TestCache_GetSet(t *testing.T) {
 	})
 
 	t.Run("miss value", func(t *testing.T) {
-		c := NewCache[string, string]()
+		c := NewCache[string, string](10)
 
 		c.Set("key-1", "val-1")
 		c.Set("key-2", "val-2")
@@ -33,7 +33,7 @@ func TestCache_GetSet(t *testing.T) {
 
 func TestCache_Has(t *testing.T) {
 	t.Run("success", func(t *testing.T) {
-		c := NewCache[string, string]()
+		c := NewCache[string, string](10)
 
 		c.Set("key-1", "val-1")
 		c.Set("key-2", "val-2")
@@ -44,7 +44,7 @@ func TestCache_Has(t *testing.T) {
 	})
 
 	t.Run("miss value", func(t *testing.T) {
-		c := NewCache[string, string]()
+		c := NewCache[string, string](10)
 
 		c.Set("key-1", "val-1")
 		c.Set("key-2", "val-2")
@@ -57,7 +57,7 @@ func TestCache_Has(t *testing.T) {
 
 func TestCache_Del(t *testing.T) {
 	t.Run("success", func(t *testing.T) {
-		c := NewCache[string, string]()
+		c := NewCache[string, string](10)
 
 		c.Set("key-1", "val-1")
 		c.Set("key-2", "val-2")
@@ -69,7 +69,7 @@ func TestCache_Del(t *testing.T) {
 	})
 
 	t.Run("miss value", func(t *testing.T) {
-		c := NewCache[string, string]()
+		c := NewCache[string, string](10)
 
 		c.Set("key-1", "val-1")
 		c.Set("key-2", "val-2")
