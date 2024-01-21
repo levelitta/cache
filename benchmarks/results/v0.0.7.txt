@@ -1,0 +1,11 @@
+PASS
+ok  	github.com/levelitta/cache	0.003s
+goos: linux
+goarch: amd64
+pkg: github.com/levelitta/cache/benchmarks
+cpu: Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz
+BenchmarkCache/empty_cache:_reads=0%,_write=100%-12         	 3198649	       360.5 ns/op	     111 B/op	       4 allocs/op
+BenchmarkCache/empty_cache:_reads=50%,_write=50%-12         	 2573205	       519.0 ns/op	     135 B/op	       6 allocs/op
+BenchmarkCache/filled_cache:_reads=0%,_write=100%-12        	 5447671	       233.7 ns/op	      23 B/op	       1 allocs/op
+BenchmarkCache/filled_cache:_reads=50%,_write=50%-12        	 3525092	       354.6 ns/op	      47 B/op	       3 allocs/op
+BenchmarkCache/delete_item_and_set_new-12                   	 2247452	       545.8 ns/op	     135 B/op	       6 allocs/op
